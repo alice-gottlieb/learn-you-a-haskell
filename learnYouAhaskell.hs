@@ -245,3 +245,14 @@ partition' f all@(x:xs)
 	| otherwise = (a, x : b)
 	where (a, b) = partition' f xs
 
+findKeysBy' :: (k -> Bool) -> [(k, v)] -> [v]
+findKeysBy' f xs = map snd (filter (\(k,v) -> (f k)) xs)
+
+findKeys' :: (Eq k) => k -> [(k, v)] -> [v]
+findKeys' key = findKeysBy' (==key)
+
+findKey' :: (Eq k) => k -> [(k, v)] -> Maybe v
+findKey' key xs 
+	| null res = Nothing
+	| otherwise = Just $ head res
+	where res = findKeys' key xs
