@@ -1,5 +1,7 @@
 import qualified Data.List as L
 import Data.Char
+import qualified Data.Map as Map
+import qualified Data.Set as Set
 
 tripleMe x = tripleUs x 0
 
